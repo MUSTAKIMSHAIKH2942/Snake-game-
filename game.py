@@ -4,6 +4,7 @@ import random
 
 pygame.init()
 
+# Colors
 white = (255, 255, 255)
 yellow = (255, 255, 102)
 black = (0, 0, 0)
@@ -11,6 +12,7 @@ red = (213, 50, 80)
 green = (0, 255, 0)
 blue = (50, 153, 213)
 
+# Screen dimensions
 dis_width = 800
 dis_height = 600
 
@@ -20,21 +22,18 @@ pygame.display.set_caption('Snake Game')
 clock = pygame.time.Clock()
 
 snake_block = 10
-snake_speed = 30
+snake_speed = 10
 
 font_style = pygame.font.SysFont(None, 50)
-score_font = pygame.font.SysFont(None, 35)
-
+score_font = pygame.font.SysFont(None, 55)
 
 def our_snake(snake_block, snake_list):
     for x in snake_list:
         pygame.draw.rect(dis, black, [x[0], x[1], snake_block, snake_block])
 
-
 def message(msg, color):
     mesg = font_style.render(msg, True, color)
     dis.blit(mesg, [dis_width / 6, dis_height / 3])
-
 
 def game_loop():
     game_over = False
@@ -53,7 +52,6 @@ def game_loop():
     foody = round(random.randrange(0, dis_height - snake_block) / 10.0) * 10.0
 
     while not game_over:
-
         while game_close == True:
             dis.fill(blue)
             message("You lost! Press Q-Quit or C-Play Again", red)
@@ -114,6 +112,5 @@ def game_loop():
 
     pygame.quit()
     quit()
-
 
 game_loop()
